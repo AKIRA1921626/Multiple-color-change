@@ -132,14 +132,14 @@
 --group
 
 --group:変換後処理,true
---check@mono:単色化,false
+--select@mono:単色化=0,単色化しない=0,色を変換した後に単色化=1,色を変換せずに単色化=2
 --color@mono_color:単色化色,0xffffff
 --track@mono_strength:単色化強さ,0,100,100,1
---check@c_invertion:色反転,false
+--select@c_invert:色反転=0,反転しない=0,色を変換した後に反転=1,色を変換せずに反転=2
 --check@chroma:クロマキー,false
 --group
 
---[[pixelshader@psmain:
+--[[pixelshader@color_conversion:
 Texture2D tex       : register(t0);
 SamplerState samp   : register(s0);
 
@@ -150,11 +150,12 @@ cbuffer constant0 : register(b0) {
     float4 colors_after[6];
     float4 global_tol_plus;
     float4 global_tol_minus;
-    float4 options;      // x:mono, y:invert, z:mono_strength, w:chroma
+    // options : x=mono(0:なし 1:変換後 2:変換せず), y=c_invert(0:なし 1:変換後 2:変換せず), z=mono_strength, w=chroma
+    float4 options;
     float4 mono_color;
 };
 
-float4 psmain(float4 pos : SV_Position, float2 uv : TEXCOORD) : SV_Target {
+float4 color_conversion(float4 pos : SV_Position, float2 uv : TEXCOORD) : SV_Target {
     float4 color = tex.Sample(samp, uv);
     if (color.a == 0.0) return color;
 
@@ -163,27 +164,42 @@ float4 psmain(float4 pos : SV_Position, float2 uv : TEXCOORD) : SV_Target {
             float3 diff = color.rgb - colors_before[i].rgb;
             float3 t_plus = max(0.0, colors_tol_plus[i].rgb + global_tol_plus.rgb);
             float3 t_minus = max(0.0, colors_tol_minus[i].rgb + global_tol_minus.rgb);
-            
+
             if (diff.r <= t_plus.r && diff.r >= -t_minus.r &&
                 diff.g <= t_plus.g && diff.g >= -t_minus.g &&
                 diff.b <= t_plus.b && diff.b >= -t_minus.b) {
-                
+
                 if (options.w > 0.5) {
-                    // クロマキー有効時は透明にする
+                    // クロマキー: 透明にする
                     color = float4(0.0, 0.0, 0.0, 0.0);
                 } else {
-                    color.rgb = colors_after[i].rgb;
-                    
-                    if (options.x > 0.5) { // 単色化
-                        float y = 0.298912 * color.r + 0.586611 * color.g + 0.114478 * color.b;
-                        color.rgb = lerp(color.rgb, mono_color.rgb * y, options.z);
-                    }
-                    
-                    if (options.y > 0.5) { // 反転
-                        color.rgb = 1.0 - color.rgb;
+                    // options.x: mono  0=なし 1=変換後に単色化 2=変換せずに単色化
+                    // options.y: c_invert  0=なし 1=変換後に反転 2=変換せずに反転
+                    bool has_before = (options.x > 1.5 || options.y > 1.5);
+
+                    if (!has_before) {
+                        // 「変換後」系: 先に色を変換してから処理
+                        color.rgb = colors_after[i].rgb;
+
+                        if (options.x > 0.5) { // mono == 1: 色を変換した後に単色化
+                            float y = 0.298912 * color.r + 0.586611 * color.g + 0.114478 * color.b;
+                            color.rgb = lerp(color.rgb, mono_color.rgb * y, options.z);
+                        }
+                        if (options.y > 0.5) { // c_invert == 1: 色を変換した後に反転
+                            color.rgb = 1.0 - color.rgb;
+                        }
+                    } else {
+                        // 「変換せず」系: 元の色のまま処理（色変換はしない）
+                        if (options.x > 1.5) { // mono == 2: 色を変換せずに単色化
+                            float y = 0.298912 * color.r + 0.586611 * color.g + 0.114478 * color.b;
+                            color.rgb = lerp(color.rgb, mono_color.rgb * y, options.z);
+                        }
+                        if (options.y > 1.5) { // c_invert == 2: 色を変換せずに反転
+                            color.rgb = 1.0 - color.rgb;
+                        }
                     }
                 }
-                
+
                 break;
             }
         }
@@ -248,15 +264,16 @@ table.insert(constants, ((col_whole_g_minus or 0) + (col_whole_g_plus_minus or 0
 table.insert(constants, ((col_whole_b_minus or 0) + (col_whole_b_plus_minus or 0) + whole_base_m) / 255.0)
 table.insert(constants, 0.0)
 
-table.insert(constants, mono and 1.0 or 0.0)
-table.insert(constants, c_invertion and 1.0 or 0.0)
+-- options: x=mono(0/1/2), y=c_invert(0/1/2), z=mono_strength, w=chroma
+table.insert(constants, (mono or 0) * 1.0)
+table.insert(constants, (c_invert or 0) * 1.0)
 table.insert(constants, (mono_strength or 100) / 100.0)
 table.insert(constants, chroma and 1.0 or 0.0)
 
 local m_r, m_g, m_b = hex2rgb(mono_color or 0xffffff)
 table.insert(constants, m_r); table.insert(constants, m_g); table.insert(constants, m_b); table.insert(constants, 0.0)
 
-obj.pixelshader("psmain", "object", "object", constants, "copy", "clip")
+obj.pixelshader("color_conversion", "object", "object", constants, "copy", "clip")
 
 
 @指定色複数変更（個別）
@@ -395,14 +412,14 @@ obj.pixelshader("psmain", "object", "object", constants, "copy", "clip")
 --group
 
 --group:変換後処理,true
---check@mono:単色化,false
+--select@mono:単色化=0,単色化しない=0,色を変換した後に単色化=1,色を変換せずに単色化=2
 --color@mono_color:単色化色,0xffffff
 --track@mono_strength:単色化強さ,0,100,100,1
---check@c_invertion:色反転,false
+--select@c_invert:色反転=0,反転しない=0,色を変換した後に反転=1,色を変換せずに反転=2
 --check@chroma:クロマキー,false
 --group
 
---[[pixelshader@psmain:
+--[[pixelshader@color_conversion:
 Texture2D tex       : register(t0);
 SamplerState samp   : register(s0);
 
@@ -413,11 +430,12 @@ cbuffer constant0 : register(b0) {
     float4 colors_after[6];
     float4 global_tol_plus;
     float4 global_tol_minus;
-    float4 options;      // x:mono, y:invert, z:mono_strength, w:chroma
+    // options : x=mono(0:なし 1:変換後 2:変換せず), y=c_invert(0:なし 1:変換後 2:変換せず), z=mono_strength, w=chroma
+    float4 options;
     float4 mono_color;
 };
 
-float4 psmain(float4 pos : SV_Position, float2 uv : TEXCOORD) : SV_Target {
+float4 color_conversion(float4 pos : SV_Position, float2 uv : TEXCOORD) : SV_Target {
     float4 color = tex.Sample(samp, uv);
     if (color.a == 0.0) return color;
 
@@ -426,27 +444,42 @@ float4 psmain(float4 pos : SV_Position, float2 uv : TEXCOORD) : SV_Target {
             float3 diff = color.rgb - colors_before[i].rgb;
             float3 t_plus = max(0.0, colors_tol_plus[i].rgb + global_tol_plus.rgb);
             float3 t_minus = max(0.0, colors_tol_minus[i].rgb + global_tol_minus.rgb);
-            
+
             if (diff.r <= t_plus.r && diff.r >= -t_minus.r &&
                 diff.g <= t_plus.g && diff.g >= -t_minus.g &&
                 diff.b <= t_plus.b && diff.b >= -t_minus.b) {
-                
+
                 if (options.w > 0.5) {
-                    // クロマキー有効時は透明にする
+                    // クロマキー: 透明にする
                     color = float4(0.0, 0.0, 0.0, 0.0);
                 } else {
-                    color.rgb = colors_after[i].rgb;
-                    
-                    if (options.x > 0.5) { // 単色化
-                        float y = 0.298912 * color.r + 0.586611 * color.g + 0.114478 * color.b;
-                        color.rgb = lerp(color.rgb, mono_color.rgb * y, options.z);
-                    }
-                    
-                    if (options.y > 0.5) { // 反転
-                        color.rgb = 1.0 - color.rgb;
+                    // options.x: mono  0=なし 1=変換後に単色化 2=変換せずに単色化
+                    // options.y: c_invert  0=なし 1=変換後に反転 2=変換せずに反転
+                    bool has_before = (options.x > 1.5 || options.y > 1.5);
+
+                    if (!has_before) {
+                        // 「変換後」系: 先に色を変換してから処理
+                        color.rgb = colors_after[i].rgb;
+
+                        if (options.x > 0.5) { // mono == 1: 色を変換した後に単色化
+                            float y = 0.298912 * color.r + 0.586611 * color.g + 0.114478 * color.b;
+                            color.rgb = lerp(color.rgb, mono_color.rgb * y, options.z);
+                        }
+                        if (options.y > 0.5) { // c_invert == 1: 色を変換した後に反転
+                            color.rgb = 1.0 - color.rgb;
+                        }
+                    } else {
+                        // 「変換せず」系: 元の色のまま処理（色変換はしない）
+                        if (options.x > 1.5) { // mono == 2: 色を変換せずに単色化
+                            float y = 0.298912 * color.r + 0.586611 * color.g + 0.114478 * color.b;
+                            color.rgb = lerp(color.rgb, mono_color.rgb * y, options.z);
+                        }
+                        if (options.y > 1.5) { // c_invert == 2: 色を変換せずに反転
+                            color.rgb = 1.0 - color.rgb;
+                        }
                     }
                 }
-                
+
                 break;
             }
         }
@@ -512,12 +545,13 @@ table.insert(constants_ind, ((col_whole_g_minus or 0) + (col_whole_g_plus_minus 
 table.insert(constants_ind, ((col_whole_b_minus or 0) + (col_whole_b_plus_minus or 0) + whole_base_m) / 255.0)
 table.insert(constants_ind, 0.0)
 
-table.insert(constants_ind, mono and 1.0 or 0.0)
-table.insert(constants_ind, c_invertion and 1.0 or 0.0)
+-- options: x=mono(0/1/2), y=c_invert(0/1/2), z=mono_strength, w=chroma
+table.insert(constants_ind, (mono or 0) * 1.0)
+table.insert(constants_ind, (c_invert or 0) * 1.0)
 table.insert(constants_ind, (mono_strength or 100) / 100.0)
 table.insert(constants_ind, chroma and 1.0 or 0.0)
 
 local m_r, m_g, m_b = hex2rgb(mono_color or 0xffffff)
 table.insert(constants_ind, m_r); table.insert(constants_ind, m_g); table.insert(constants_ind, m_b); table.insert(constants_ind, 0.0)
 
-obj.pixelshader("psmain", "object", "object", constants_ind, "copy", "clip")
+obj.pixelshader("color_conversion", "object", "object", constants_ind, "copy", "clip")
