@@ -1,0 +1,523 @@
+@指定色複数変更
+--label:色調整
+
+--group:変更後の色,true
+--color@color_after_change:変更後色,0xffffff
+--group
+
+--group:色1,true
+--color@col0:変更前色1,nil
+--track@col0_rgb_plus_minus:色1赤緑青(±),-255,255,0,1
+--track@col0_rgb_plus:色1赤緑青(+),-255,255,0,1
+--track@col0_rgb_minus:色1赤緑青(-),-255,255,0,1
+--group
+--group:色1詳細,false
+--track@col0_r_plus_minus:色1赤(±),-255,255,0,1
+--track@col0_r_plus:色1赤(+),-255,255,0,1
+--track@col0_r_minus:色1赤(-),-255,255,0,1
+--track@col0_g_plus_minus:色1緑(±),-255,255,0,1
+--track@col0_g_plus:色1緑(+),-255,255,0,1
+--track@col0_g_minus:色1緑(-),-255,255,0,1
+--track@col0_b_plus_minus:色1青(±),-255,255,0,1
+--track@col0_b_plus:色1青(+),-255,255,0,1
+--track@col0_b_minus:色1青(-),-255,255,0,1
+--group
+
+--group:色2,false
+--color@col1:変更前色2,nil
+--track@col1_rgb_plus_minus:色2赤緑青(±),-255,255,0,1
+--track@col1_rgb_plus:色2赤緑青(+),-255,255,0,1
+--track@col1_rgb_minus:色2赤緑青(-),-255,255,0,1
+--group
+--group:色2詳細,false
+--track@col1_r_plus_minus:色2赤(±),-255,255,0,1
+--track@col1_r_plus:色2赤(+),-255,255,0,1
+--track@col1_r_minus:色2赤(-),-255,255,0,1
+--track@col1_g_plus_minus:色2緑(±),-255,255,0,1
+--track@col1_g_plus:色2緑(+),-255,255,0,1
+--track@col1_g_minus:色2緑(-),-255,255,0,1
+--track@col1_b_plus_minus:色2青(±),-255,255,0,1
+--track@col1_b_plus:色2青(+),-255,255,0,1
+--track@col1_b_minus:色2青(-),-255,255,0,1
+--group
+
+--group:色3,false
+--color@col2:変更前色3,nil
+--track@col2_rgb_plus_minus:色3赤緑青(±),-255,255,0,1
+--track@col2_rgb_plus:色3赤緑青(+),-255,255,0,1
+--track@col2_rgb_minus:色3赤緑青(-),-255,255,0,1
+--group
+--group:色3詳細,false
+--track@col2_r_plus_minus:色3赤(±),-255,255,0,1
+--track@col2_r_plus:色3赤(+),-255,255,0,1
+--track@col2_r_minus:色3赤(-),-255,255,0,1
+--track@col2_g_plus_minus:色3緑(±),-255,255,0,1
+--track@col2_g_plus:色3緑(+),-255,255,0,1
+--track@col2_g_minus:色3緑(-),-255,255,0,1
+--track@col2_b_plus_minus:色3青(±),-255,255,0,1
+--track@col2_b_plus:色3青(+),-255,255,0,1
+--track@col2_b_minus:色3青(-),-255,255,0,1
+--group
+
+--group:色4,false
+--color@col3:変更前色4,nil
+--track@col3_rgb_plus_minus:色4赤緑青(±),-255,255,0,1
+--track@col3_rgb_plus:色4赤緑青(+),-255,255,0,1
+--track@col3_rgb_minus:色4赤緑青(-),-255,255,0,1
+--group
+--group:色4詳細,false
+--track@col3_r_plus_minus:色4赤(±),-255,255,0,1
+--track@col3_r_plus:色4赤(+),-255,255,0,1
+--track@col3_r_minus:色4赤(-),-255,255,0,1
+--track@col3_g_plus_minus:色4緑(±),-255,255,0,1
+--track@col3_g_plus:色4緑(+),-255,255,0,1
+--track@col3_g_minus:色4緑(-),-255,255,0,1
+--track@col3_b_plus_minus:色4青(±),-255,255,0,1
+--track@col3_b_plus:色4青(+),-255,255,0,1
+--track@col3_b_minus:色4青(-),-255,255,0,1
+--group
+
+--group:色5,false
+--color@col4:変更前色5,nil
+--track@col4_rgb_plus_minus:色5赤緑青(±),-255,255,0,1
+--track@col4_rgb_plus:色5赤緑青(+),-255,255,0,1
+--track@col4_rgb_minus:色5赤緑青(-),-255,255,0,1
+--group
+--group:色5詳細,false
+--track@col4_r_plus_minus:色5赤(±),-255,255,0,1
+--track@col4_r_plus:色5赤(+),-255,255,0,1
+--track@col4_r_minus:色5赤(-),-255,255,0,1
+--track@col4_g_plus_minus:色5緑(±),-255,255,0,1
+--track@col4_g_plus:色5緑(+),-255,255,0,1
+--track@col4_g_minus:色5緑(-),-255,255,0,1
+--track@col4_b_plus_minus:色5青(±),-255,255,0,1
+--track@col4_b_plus:色5青(+),-255,255,0,1
+--track@col4_b_minus:色5青(-),-255,255,0,1
+--group
+
+--group:色6,false
+--color@col5:変更前色6,nil
+--track@col5_rgb_plus_minus:色6赤緑青(±),-255,255,0,1
+--track@col5_rgb_plus:色6赤緑青(+),-255,255,0,1
+--track@col5_rgb_minus:色6赤緑青(-),-255,255,0,1
+--group
+--group:色6詳細,false
+--track@col5_r_plus_minus:色6赤(±),-255,255,0,1
+--track@col5_r_plus:色6赤(+),-255,255,0,1
+--track@col5_r_minus:色6赤(-),-255,255,0,1
+--track@col5_g_plus_minus:色6緑(±),-255,255,0,1
+--track@col5_r_plus_minus:色6赤(±),-255,255,0,1
+--track@col5_g_plus:色6緑(+),-255,255,0,1
+--track@col5_g_minus:色6緑(-),-255,255,0,1
+--track@col5_b_plus_minus:色6青(±),-255,255,0,1
+--track@col5_b_plus:色6青(+),-255,255,0,1
+--track@col5_b_minus:色6青(-),-255,255,0,1
+--group
+
+--group:変更前色全体補正,true
+--track@col_whole_rgb_plus_minus:全体赤緑青(±),-255,255,0,1
+--track@col_whole_rgb_plus:全体赤緑青(+),-255,255,0,1
+--track@col_whole_rgb_minus:全体赤緑青(-),-255,255,0,1
+--group
+--group:変更前色全体補正(詳細),false
+--track@col_whole_r_plus_minus:全体赤(±),-255,255,0,1
+--track@col_whole_r_plus:全体赤(+),-255,255,0,1
+--track@col_whole_r_minus:全体赤(-),-255,255,0,1
+--track@col_whole_g_plus_minus:全体緑(±),-255,255,0,1
+--track@col_whole_g_plus:全体緑(+),-255,255,0,1
+--track@col_whole_g_minus:全体緑(-),-255,255,0,1
+--track@col_whole_b_plus_minus:全体青(±),-255,255,0,1
+--track@col_whole_b_plus:全体青(+),-255,255,0,1
+--track@col_whole_b_minus:全体青(-),-255,255,0,1
+--group
+
+--group:変換後処理,true
+--check@mono:単色化,false
+--color@mono_color:単色化色,0xffffff
+--track@mono_strength:単色化強さ,0,100,100,1
+--check@c_invertion:色反転,false
+--check@chroma:クロマキー,false
+--group
+
+--[[pixelshader@psmain:
+Texture2D tex       : register(t0);
+SamplerState samp   : register(s0);
+
+cbuffer constant0 : register(b0) {
+    float4 colors_before[6];
+    float4 colors_tol_plus[6];
+    float4 colors_tol_minus[6];
+    float4 colors_after[6];
+    float4 global_tol_plus;
+    float4 global_tol_minus;
+    float4 options;      // x:mono, y:invert, z:mono_strength, w:chroma
+    float4 mono_color;
+};
+
+float4 psmain(float4 pos : SV_Position, float2 uv : TEXCOORD) : SV_Target {
+    float4 color = tex.Sample(samp, uv);
+    if (color.a == 0.0) return color;
+
+    for (int i = 0; i < 6; i++) {
+        if (colors_before[i].a > 0.5) {
+            float3 diff = color.rgb - colors_before[i].rgb;
+            float3 t_plus = max(0.0, colors_tol_plus[i].rgb + global_tol_plus.rgb);
+            float3 t_minus = max(0.0, colors_tol_minus[i].rgb + global_tol_minus.rgb);
+            
+            if (diff.r <= t_plus.r && diff.r >= -t_minus.r &&
+                diff.g <= t_plus.g && diff.g >= -t_minus.g &&
+                diff.b <= t_plus.b && diff.b >= -t_minus.b) {
+                
+                if (options.w > 0.5) {
+                    // クロマキー有効時は透明にする
+                    color = float4(0.0, 0.0, 0.0, 0.0);
+                } else {
+                    color.rgb = colors_after[i].rgb;
+                    
+                    if (options.x > 0.5) { // 単色化
+                        float y = 0.298912 * color.r + 0.586611 * color.g + 0.114478 * color.b;
+                        color.rgb = lerp(color.rgb, mono_color.rgb * y, options.z);
+                    }
+                    
+                    if (options.y > 0.5) { // 反転
+                        color.rgb = 1.0 - color.rgb;
+                    }
+                }
+                
+                break;
+            }
+        }
+    }
+    return color;
+}
+]]
+
+local function hex2rgb(hex)
+    if not hex then return 0, 0, 0 end
+    local r = bit.rshift(bit.band(hex, 0xff0000), 16) / 255.0
+    local g = bit.rshift(bit.band(hex, 0x00ff00), 8) / 255.0
+    local b = bit.band(hex, 0x0000ff) / 255.0
+    return r, g, b
+end
+
+local colors = {
+    {col=col0, r_p=col0_r_plus, r_m=col0_r_minus, r_pm=col0_r_plus_minus, g_p=col0_g_plus, g_m=col0_g_minus, g_pm=col0_g_plus_minus, b_p=col0_b_plus, b_m=col0_b_minus, b_pm=col0_b_plus_minus, rgb_p=col0_rgb_plus, rgb_m=col0_rgb_minus, rgb_pm=col0_rgb_plus_minus},
+    {col=col1, r_p=col1_r_plus, r_m=col1_r_minus, r_pm=col1_r_plus_minus, g_p=col1_g_plus, g_m=col1_g_minus, g_pm=col1_g_plus_minus, b_p=col1_b_plus, b_m=col1_b_minus, b_pm=col1_b_plus_minus, rgb_p=col1_rgb_plus, rgb_m=col1_rgb_minus, rgb_pm=col1_rgb_plus_minus},
+    {col=col2, r_p=col2_r_plus, r_m=col2_r_minus, r_pm=col2_r_plus_minus, g_p=col2_g_plus, g_m=col2_g_minus, g_pm=col2_g_plus_minus, b_p=col2_b_plus, b_m=col2_b_minus, b_pm=col2_b_plus_minus, rgb_p=col2_rgb_plus, rgb_m=col2_rgb_minus, rgb_pm=col2_rgb_plus_minus},
+    {col=col3, r_p=col3_r_plus, r_m=col3_r_minus, r_pm=col3_r_plus_minus, g_p=col3_g_plus, g_m=col3_g_minus, g_pm=col3_g_plus_minus, b_p=col3_b_plus, b_m=col3_b_minus, b_pm=col3_b_plus_minus, rgb_p=col3_rgb_plus, rgb_m=col3_rgb_minus, rgb_pm=col3_rgb_plus_minus},
+    {col=col4, r_p=col4_r_plus, r_m=col4_r_minus, r_pm=col4_r_plus_minus, g_p=col4_g_plus, g_m=col4_g_minus, g_pm=col4_g_plus_minus, b_p=col4_b_plus, b_m=col4_b_minus, b_pm=col4_b_plus_minus, rgb_p=col4_rgb_plus, rgb_m=col4_rgb_minus, rgb_pm=col4_rgb_plus_minus},
+    {col=col5, r_p=col5_r_plus, r_m=col5_r_minus, r_pm=col5_r_plus_minus, g_p=col5_g_plus, g_m=col5_g_minus, g_pm=col5_g_plus_minus, b_p=col5_b_plus, b_m=col5_b_minus, b_pm=col5_b_plus_minus, rgb_p=col5_rgb_plus, rgb_m=col5_rgb_minus, rgb_pm=col5_rgb_plus_minus}
+}
+
+local constants = {}
+for i, c in ipairs(colors) do
+    if c.col then
+        local r, g, b = hex2rgb(c.col)
+        table.insert(constants, r); table.insert(constants, g); table.insert(constants, b); table.insert(constants, 1.0)
+    else
+        table.insert(constants, 0); table.insert(constants, 0); table.insert(constants, 0); table.insert(constants, 0.0)
+    end
+end
+for i, c in ipairs(colors) do
+    local base_p = (c.rgb_p or 0) + (c.rgb_pm or 0)
+    table.insert(constants, ((c.r_p or 0) + (c.r_pm or 0) + base_p) / 255.0)
+    table.insert(constants, ((c.g_p or 0) + (c.g_pm or 0) + base_p) / 255.0)
+    table.insert(constants, ((c.b_p or 0) + (c.b_pm or 0) + base_p) / 255.0)
+    table.insert(constants, 0.0)
+end
+for i, c in ipairs(colors) do
+    local base_m = (c.rgb_m or 0) + (c.rgb_pm or 0)
+    table.insert(constants, ((c.r_m or 0) + (c.r_pm or 0) + base_m) / 255.0)
+    table.insert(constants, ((c.g_m or 0) + (c.g_pm or 0) + base_m) / 255.0)
+    table.insert(constants, ((c.b_m or 0) + (c.b_pm or 0) + base_m) / 255.0)
+    table.insert(constants, 0.0)
+end
+local a_r, a_g, a_b = hex2rgb(color_after_change or 0xffffff)
+for i=1, 6 do
+    table.insert(constants, a_r); table.insert(constants, a_g); table.insert(constants, a_b); table.insert(constants, 0.0)
+end
+local whole_base_p = (col_whole_rgb_plus or 0) + (col_whole_rgb_plus_minus or 0)
+table.insert(constants, ((col_whole_r_plus or 0) + (col_whole_r_plus_minus or 0) + whole_base_p) / 255.0)
+table.insert(constants, ((col_whole_g_plus or 0) + (col_whole_g_plus_minus or 0) + whole_base_p) / 255.0)
+table.insert(constants, ((col_whole_b_plus or 0) + (col_whole_b_plus_minus or 0) + whole_base_p) / 255.0)
+table.insert(constants, 0.0)
+
+local whole_base_m = (col_whole_rgb_minus or 0) + (col_whole_rgb_plus_minus or 0)
+table.insert(constants, ((col_whole_r_minus or 0) + (col_whole_r_plus_minus or 0) + whole_base_m) / 255.0)
+table.insert(constants, ((col_whole_g_minus or 0) + (col_whole_g_plus_minus or 0) + whole_base_m) / 255.0)
+table.insert(constants, ((col_whole_b_minus or 0) + (col_whole_b_plus_minus or 0) + whole_base_m) / 255.0)
+table.insert(constants, 0.0)
+
+table.insert(constants, mono and 1.0 or 0.0)
+table.insert(constants, c_invertion and 1.0 or 0.0)
+table.insert(constants, (mono_strength or 100) / 100.0)
+table.insert(constants, chroma and 1.0 or 0.0)
+
+local m_r, m_g, m_b = hex2rgb(mono_color or 0xffffff)
+table.insert(constants, m_r); table.insert(constants, m_g); table.insert(constants, m_b); table.insert(constants, 0.0)
+
+obj.pixelshader("psmain", "object", "object", constants, "copy", "clip")
+
+
+@指定色複数変更（個別）
+--label:色調整
+
+--group:色1,true
+--color@col0:変更前色1,nil
+--track@col0_rgb_plus_minus:色1赤緑青(±),-255,255,0,1
+--track@col0_rgb_plus:色1赤緑青(+),-255,255,0,1
+--track@col0_rgb_minus:色1赤緑青(-),-255,255,0,1
+--color@col0_after_change:変更後色1,0xffffff
+--group
+--group:色1詳細,false
+--track@col0_r_plus_minus:色1赤(±),-255,255,0,1
+--track@col0_r_plus:色1赤(+),-255,255,0,1
+--track@col0_r_minus:色1赤(-),-255,255,0,1
+--track@col0_g_plus_minus:色1緑(±),-255,255,0,1
+--track@col0_g_plus:色1緑(+),-255,255,0,1
+--track@col0_g_minus:色1緑(-),-255,255,0,1
+--track@col0_b_plus_minus:色1青(±),-255,255,0,1
+--track@col0_b_plus:色1青(+),-255,255,0,1
+--track@col0_b_minus:色1青(-),-255,255,0,1
+--group
+
+--group:色2,false
+--color@col1:変更前色2,nil
+--track@col1_rgb_plus_minus:色2赤緑青(±),-255,255,0,1
+--track@col1_rgb_plus:色2赤緑青(+),-255,255,0,1
+--track@col1_rgb_minus:色2赤緑青(-),-255,255,0,1
+--color@col1_after_change:変更後色2,0xffffff
+--group
+--group:色2詳細,false
+--track@col1_r_plus_minus:色2赤(±),-255,255,0,1
+--track@col1_r_plus:色2赤(+),-255,255,0,1
+--track@col1_r_minus:色2赤(-),-255,255,0,1
+--track@col1_g_plus_minus:色2緑(±),-255,255,0,1
+--track@col1_g_plus:色2緑(+),-255,255,0,1
+--track@col1_g_minus:色2緑(-),-255,255,0,1
+--track@col1_b_plus_minus:色2青(±),-255,255,0,1
+--track@col1_b_plus:色2青(+),-255,255,0,1
+--track@col1_b_minus:色2青(-),-255,255,0,1
+--group
+
+--group:色3,false
+--color@col2:変更前色3,nil
+--track@col2_rgb_plus_minus:色3赤緑青(±),-255,255,0,1
+--track@col2_rgb_plus:色3赤緑青(+),-255,255,0,1
+--track@col2_rgb_minus:色3赤緑青(-),-255,255,0,1
+--color@col2_after_change:変更後色3,0xffffff
+--group
+--group:色3詳細,false
+--track@col2_r_plus_minus:色3赤(±),-255,255,0,1
+--track@col2_r_plus:色3赤(+),-255,255,0,1
+--track@col2_r_minus:色3赤(-),-255,255,0,1
+--track@col2_g_plus_minus:色3緑(±),-255,255,0,1
+--track@col2_g_plus:色3緑(+),-255,255,0,1
+--track@col2_g_minus:色3緑(-),-255,255,0,1
+--track@col2_b_plus_minus:色3青(±),-255,255,0,1
+--track@col2_b_plus:色3青(+),-255,255,0,1
+--track@col2_b_minus:色3青(-),-255,255,0,1
+--group
+
+--group:色4,false
+--color@col3:変更前色4,nil
+--track@col3_rgb_plus_minus:色4赤緑青(±),-255,255,0,1
+--track@col3_rgb_plus:色4赤緑青(+),-255,255,0,1
+--track@col3_rgb_minus:色4赤緑青(-),-255,255,0,1
+--color@col3_after_change:変更後色4,0xffffff
+--group
+--group:色4詳細,false
+--track@col3_r_plus_minus:色4赤(±),-255,255,0,1
+--track@col3_r_plus:色4赤(+),-255,255,0,1
+--track@col3_r_minus:色4赤(-),-255,255,0,1
+--track@col3_g_plus_minus:色4緑(±),-255,255,0,1
+--track@col3_g_plus:色4緑(+),-255,255,0,1
+--track@col3_g_minus:色4緑(-),-255,255,0,1
+--track@col3_b_plus_minus:色4青(±),-255,255,0,1
+--track@col3_b_plus:色4青(+),-255,255,0,1
+--track@col3_b_minus:色4青(-),-255,255,0,1
+--group
+
+--group:色5,false
+--color@col4:変更前色5,nil
+--track@col4_rgb_plus_minus:色5赤緑青(±),-255,255,0,1
+--track@col4_rgb_plus:色5赤緑青(+),-255,255,0,1
+--track@col4_rgb_minus:色5赤緑青(-),-255,255,0,1
+--color@col4_after_change:変更後色5,0xffffff
+--group
+--group:色5詳細,false
+--track@col4_r_plus_minus:色5赤(±),-255,255,0,1
+--track@col4_r_plus:色5赤(+),-255,255,0,1
+--track@col4_r_minus:色5赤(-),-255,255,0,1
+--track@col4_g_plus_minus:色5緑(±),-255,255,0,1
+--track@col4_g_plus:色5緑(+),-255,255,0,1
+--track@col4_g_minus:色5緑(-),-255,255,0,1
+--track@col4_b_plus_minus:色5青(±),-255,255,0,1
+--track@col4_b_plus:色5青(+),-255,255,0,1
+--track@col4_b_minus:色5青(-),-255,255,0,1
+--group
+
+--group:色6,false
+--color@col5:変更前色6,nil
+--track@col5_rgb_plus_minus:色6赤緑青(±),-255,255,0,1
+--track@col5_rgb_plus:色6赤緑青(+),-255,255,0,1
+--track@col5_rgb_minus:色6赤緑青(-),-255,255,0,1
+--color@col5_after_change:変更後色6,0xffffff
+--group
+--group:色6詳細,false
+--track@col5_r_plus_minus:色6赤(±),-255,255,0,1
+--track@col5_r_plus:色6赤(+),-255,255,0,1
+--track@col5_r_minus:色6赤(-),-255,255,0,1
+--track@col5_g_plus_minus:色6緑(±),-255,255,0,1
+--track@col5_r_plus_minus:色6赤(±),-255,255,0,1
+--track@col5_g_plus:色6緑(+),-255,255,0,1
+--track@col5_g_minus:色6緑(-),-255,255,0,1
+--track@col5_b_plus_minus:色6青(±),-255,255,0,1
+--track@col5_b_plus:色6青(+),-255,255,0,1
+--track@col5_b_minus:色6青(-),-255,255,0,1
+--group
+
+--group:変更前色全体補正,true
+--track@col_whole_rgb_plus_minus:全体赤緑青(±),-255,255,0,1
+--track@col_whole_rgb_plus:全体赤緑青(+),-255,255,0,1
+--track@col_whole_rgb_minus:全体赤緑青(-),-255,255,0,1
+--group
+--group:変更前色全体補正(詳細),false
+--track@col_whole_r_plus_minus:全体赤(±),-255,255,0,1
+--track@col_whole_r_plus:全体赤(+),-255,255,0,1
+--track@col_whole_r_minus:全体赤(-),-255,255,0,1
+--track@col_whole_g_plus_minus:全体緑(±),-255,255,0,1
+--track@col_whole_g_plus:全体緑(+),-255,255,0,1
+--track@col_whole_g_minus:全体緑(-),-255,255,0,1
+--track@col_whole_b_plus_minus:全体青(±),-255,255,0,1
+--track@col_whole_b_plus:全体青(+),-255,255,0,1
+--track@col_whole_b_minus:全体青(-),-255,255,0,1
+--group
+
+--group:変換後処理,true
+--check@mono:単色化,false
+--color@mono_color:単色化色,0xffffff
+--track@mono_strength:単色化強さ,0,100,100,1
+--check@c_invertion:色反転,false
+--check@chroma:クロマキー,false
+--group
+
+--[[pixelshader@psmain:
+Texture2D tex       : register(t0);
+SamplerState samp   : register(s0);
+
+cbuffer constant0 : register(b0) {
+    float4 colors_before[6];
+    float4 colors_tol_plus[6];
+    float4 colors_tol_minus[6];
+    float4 colors_after[6];
+    float4 global_tol_plus;
+    float4 global_tol_minus;
+    float4 options;      // x:mono, y:invert, z:mono_strength, w:chroma
+    float4 mono_color;
+};
+
+float4 psmain(float4 pos : SV_Position, float2 uv : TEXCOORD) : SV_Target {
+    float4 color = tex.Sample(samp, uv);
+    if (color.a == 0.0) return color;
+
+    for (int i = 0; i < 6; i++) {
+        if (colors_before[i].a > 0.5) {
+            float3 diff = color.rgb - colors_before[i].rgb;
+            float3 t_plus = max(0.0, colors_tol_plus[i].rgb + global_tol_plus.rgb);
+            float3 t_minus = max(0.0, colors_tol_minus[i].rgb + global_tol_minus.rgb);
+            
+            if (diff.r <= t_plus.r && diff.r >= -t_minus.r &&
+                diff.g <= t_plus.g && diff.g >= -t_minus.g &&
+                diff.b <= t_plus.b && diff.b >= -t_minus.b) {
+                
+                if (options.w > 0.5) {
+                    // クロマキー有効時は透明にする
+                    color = float4(0.0, 0.0, 0.0, 0.0);
+                } else {
+                    color.rgb = colors_after[i].rgb;
+                    
+                    if (options.x > 0.5) { // 単色化
+                        float y = 0.298912 * color.r + 0.586611 * color.g + 0.114478 * color.b;
+                        color.rgb = lerp(color.rgb, mono_color.rgb * y, options.z);
+                    }
+                    
+                    if (options.y > 0.5) { // 反転
+                        color.rgb = 1.0 - color.rgb;
+                    }
+                }
+                
+                break;
+            }
+        }
+    }
+    return color;
+}
+]]
+
+local function hex2rgb(hex)
+    if not hex then return 0, 0, 0 end
+    local r = bit.rshift(bit.band(hex, 0xff0000), 16) / 255.0
+    local g = bit.rshift(bit.band(hex, 0x00ff00), 8) / 255.0
+    local b = bit.band(hex, 0x0000ff) / 255.0
+    return r, g, b
+end
+
+local colors_ind = {
+    {col=col0, after=col0_after_change, r_p=col0_r_plus, r_m=col0_r_minus, r_pm=col0_r_plus_minus, g_p=col0_g_plus, g_m=col0_g_minus, g_pm=col0_g_plus_minus, b_p=col0_b_plus, b_m=col0_b_minus, b_pm=col0_b_plus_minus, rgb_p=col0_rgb_plus, rgb_m=col0_rgb_minus, rgb_pm=col0_rgb_plus_minus},
+    {col=col1, after=col1_after_change, r_p=col1_r_plus, r_m=col1_r_minus, r_pm=col1_r_plus_minus, g_p=col1_g_plus, g_m=col1_g_minus, g_pm=col1_g_plus_minus, b_p=col1_b_plus, b_m=col1_b_minus, b_pm=col1_b_plus_minus, rgb_p=col1_rgb_plus, rgb_m=col1_rgb_minus, rgb_pm=col1_rgb_plus_minus},
+    {col=col2, after=col2_after_change, r_p=col2_r_plus, r_m=col2_r_minus, r_pm=col2_r_plus_minus, g_p=col2_g_plus, g_m=col2_g_minus, g_pm=col2_g_plus_minus, b_p=col2_b_plus, b_m=col2_b_minus, b_pm=col2_b_plus_minus, rgb_p=col2_rgb_plus, rgb_m=col2_rgb_minus, rgb_pm=col2_rgb_plus_minus},
+    {col=col3, after=col3_after_change, r_p=col3_r_plus, r_m=col3_r_minus, r_pm=col3_r_plus_minus, g_p=col3_g_plus, g_m=col3_g_minus, g_pm=col3_g_plus_minus, b_p=col3_b_plus, b_m=col3_b_minus, b_pm=col3_b_plus_minus, rgb_p=col3_rgb_plus, rgb_m=col3_rgb_minus, rgb_pm=col3_rgb_plus_minus},
+    {col=col4, after=col4_after_change, r_p=col4_r_plus, r_m=col4_r_minus, r_pm=col4_r_plus_minus, g_p=col4_g_plus, g_m=col4_g_minus, g_pm=col4_g_plus_minus, b_p=col4_b_plus, b_m=col4_b_minus, b_pm=col4_b_plus_minus, rgb_p=col4_rgb_plus, rgb_m=col4_rgb_minus, rgb_pm=col4_rgb_plus_minus},
+    {col=col5, after=col5_after_change, r_p=col5_r_plus, r_m=col5_r_minus, r_pm=col5_r_plus_minus, g_p=col5_g_plus, g_m=col5_g_minus, g_pm=col5_g_plus_minus, b_p=col5_b_plus, b_m=col5_b_minus, b_pm=col5_b_plus_minus, rgb_p=col5_rgb_plus, rgb_m=col5_rgb_minus, rgb_pm=col5_rgb_plus_minus}
+}
+
+local constants_ind = {}
+for i, c in ipairs(colors_ind) do
+    if c.col then
+        local r, g, b = hex2rgb(c.col)
+        table.insert(constants_ind, r); table.insert(constants_ind, g); table.insert(constants_ind, b); table.insert(constants_ind, 1.0)
+    else
+        table.insert(constants_ind, 0); table.insert(constants_ind, 0); table.insert(constants_ind, 0); table.insert(constants_ind, 0.0)
+    end
+end
+for i, c in ipairs(colors_ind) do
+    local base_p = (c.rgb_p or 0) + (c.rgb_pm or 0)
+    table.insert(constants_ind, ((c.r_p or 0) + (c.r_pm or 0) + base_p) / 255.0)
+    table.insert(constants_ind, ((c.g_p or 0) + (c.g_pm or 0) + base_p) / 255.0)
+    table.insert(constants_ind, ((c.b_p or 0) + (c.b_pm or 0) + base_p) / 255.0)
+    table.insert(constants_ind, 0.0)
+end
+for i, c in ipairs(colors_ind) do
+    local base_m = (c.rgb_m or 0) + (c.rgb_pm or 0)
+    table.insert(constants_ind, ((c.r_m or 0) + (c.r_pm or 0) + base_m) / 255.0)
+    table.insert(constants_ind, ((c.g_m or 0) + (c.g_pm or 0) + base_m) / 255.0)
+    table.insert(constants_ind, ((c.b_m or 0) + (c.b_pm or 0) + base_m) / 255.0)
+    table.insert(constants_ind, 0.0)
+end
+for i, c in ipairs(colors_ind) do
+    local r, g, b = hex2rgb(c.after or c.col)
+    table.insert(constants_ind, r); table.insert(constants_ind, g); table.insert(constants_ind, b); table.insert(constants_ind, 0.0)
+end
+
+local whole_base_p = (col_whole_rgb_plus or 0) + (col_whole_rgb_plus_minus or 0)
+table.insert(constants_ind, ((col_whole_r_plus or 0) + (col_whole_r_plus_minus or 0) + whole_base_p) / 255.0)
+table.insert(constants_ind, ((col_whole_g_plus or 0) + (col_whole_g_plus_minus or 0) + whole_base_p) / 255.0)
+table.insert(constants_ind, ((col_whole_b_plus or 0) + (col_whole_b_plus_minus or 0) + whole_base_p) / 255.0)
+table.insert(constants_ind, 0.0)
+
+local whole_base_m = (col_whole_rgb_minus or 0) + (col_whole_rgb_plus_minus or 0)
+table.insert(constants_ind, ((col_whole_r_minus or 0) + (col_whole_r_plus_minus or 0) + whole_base_m) / 255.0)
+table.insert(constants_ind, ((col_whole_g_minus or 0) + (col_whole_g_plus_minus or 0) + whole_base_m) / 255.0)
+table.insert(constants_ind, ((col_whole_b_minus or 0) + (col_whole_b_plus_minus or 0) + whole_base_m) / 255.0)
+table.insert(constants_ind, 0.0)
+
+table.insert(constants_ind, mono and 1.0 or 0.0)
+table.insert(constants_ind, c_invertion and 1.0 or 0.0)
+table.insert(constants_ind, (mono_strength or 100) / 100.0)
+table.insert(constants_ind, chroma and 1.0 or 0.0)
+
+local m_r, m_g, m_b = hex2rgb(mono_color or 0xffffff)
+table.insert(constants_ind, m_r); table.insert(constants_ind, m_g); table.insert(constants_ind, m_b); table.insert(constants_ind, 0.0)
+
+obj.pixelshader("psmain", "object", "object", constants_ind, "copy", "clip")
